@@ -29,7 +29,7 @@ function getById(bugId) {
 function remove(bugId) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
 
-    if (!bugIdx) return Promise.reject('Cannot remove bug' + bugId)
+    if (bugIdx === -1) return Promise.reject('Cannot remove bug' + bugId)
     bugs.splice(bugIdx, 1)
     return utilService._saveToFile('./data/bug.json', bugs)
 }
