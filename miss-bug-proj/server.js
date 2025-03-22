@@ -5,14 +5,30 @@ const app = express()
 app.listen(3036, () => console.log('Server ready at port 3036'))
 
 
+
+// Read all the bugs
 app.get('/api/bug', (req, res) => {
     bugService.query()
-        .then(bugs => res.json(bugs))
+        .then(bugs => res.send(bugs))
+        .catch(err => {
+            console.log('err', err)
+            res.status(500).send('Could not get bugs')
+        })
 })
 
 app.get('/api/bug/save', (req, res) => { })
 
-app.get('/api/bug/:bugId', (req, res) => { })
+
+// Read a single bug
+app.get('/api/bug/:bugId', (req, res) => {
+    const { bugId } = req.params
+    bugService.getById(bugId)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            console.log('err', err)
+            res.status(500).send('Could not get bug')
+        })
+})
 
 app.get('/api/bug/:bugId/remove', (req, res) => { })
 
