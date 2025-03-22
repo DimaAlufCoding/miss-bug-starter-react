@@ -27,7 +27,11 @@ function getById(bugId) {
 }
 
 function remove(bugId) {
-    return storageService.remove(STORAGE_KEY, bugId)
+    const bugIdx = bugs.findIndex(bug => bug._id === bugId)
+
+    if (!bugIdx) return Promise.reject('Cannot remove bug' + bugId)
+    bugs.splice(bugIdx, 1)
+    return utilService._saveToFile('./data/bug.json', bugs)
 }
 
 function save(bug) {
@@ -40,6 +44,3 @@ function save(bug) {
 
 
 
-function getDefaultFilter() {
-    return { txt: '', minSeverity: 0 }
-}
