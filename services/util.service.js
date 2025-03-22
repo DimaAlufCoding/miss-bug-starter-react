@@ -7,7 +7,8 @@ export const utilService = {
     getRandomIntInclusive,
     loadFromStorage,
     saveToStorage,
-    readJsonFile
+    readJsonFile,
+    _saveToFile
 }
 
 function makeId(length = 6) {
@@ -54,4 +55,16 @@ function readJsonFile(path) {
     const str = fs.readFileSync(path, 'utf8')
     const json = JSON.parse(str)
     return json
+}
+
+
+function _saveToFile(path, json) {
+    return new Promise((resolve, reject) => {
+        const data = JSON.stringify(json, null, 4)
+
+        fs.writeFile(path, data, err => {
+            if (err) reject(err)
+            else resolve()
+        })
+    })
 }
