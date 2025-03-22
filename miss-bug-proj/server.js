@@ -1,8 +1,10 @@
 import express from 'express'
-import { bugService } from '../services/bug.service.js'
-import { loggerService } from '../services/logger.service.js'
+import { bugService } from '../public/services/bug.service.js'
+import { loggerService } from '../public/services/logger.service.js'
 
 const app = express()
+app.use(express.static('public'))
+
 app.listen(3036, () => console.log('Server ready at port 3036'))
 
 
