@@ -15,8 +15,20 @@ app.get('/api/bug', (req, res) => {
             res.status(500).send('Could not get bugs')
         })
 })
-
-app.get('/api/bug/save', (req, res) => { })
+// Create a bug
+app.get('/api/bug/save', (req, res) => {
+    const bugToSave = {
+        _id: req.query._id,
+        title: req.query.title,
+        severity: +req.query.severity,
+    }
+    bugService.save(bugToSave)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            console.log('err', err)
+            res.status(500).send('Could not save bug')
+        })
+ })
 
 
 // Read a single bug
