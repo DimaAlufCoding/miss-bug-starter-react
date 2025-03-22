@@ -6,7 +6,6 @@ import { storageService } from './async-storage.service.js'
 export const bugService = {
     query,
     getById,
-    save,
     remove,
 
 }
@@ -34,13 +33,15 @@ function remove(bugId) {
     return utilService._saveToFile('./data/bug.json', bugs)
 }
 
-function save(bug) {
-    if (bug._id) {
-        return storageService.put(STORAGE_KEY, bug)
-    } else {
-        return storageService.post(STORAGE_KEY, bug)
-    }
-}
+
+
+
+
+
+
+
+
+
 
 
 
