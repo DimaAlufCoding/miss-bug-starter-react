@@ -32,11 +32,12 @@ function query(filterBy) {
 
 function getById(bugId) {
     return axios.get(BASE_URL + bugId)
-    .then(res => res.data)
+        .then(res => res.data)
 }
 
 function remove(bugId) {
-    return axios.get(BASE_URL + bugId + '/remove')
+    return axios.delete(BASE_URL + bugId)
+        .then(res => res.data)
 }
 
 
@@ -45,10 +46,20 @@ function save(bug) {
         title: bug.title,
         severity: bug.severity
     }
-    if (bug._id) params._id = bug._id
 
+    if (bug._id) {
+        params._id = bug._id
+    }
+
+    else {
+        return axios.post(BASE_URL, bug)
+            .then(res => res.data)
+    }
     return axios.get(BASE_URL + 'save', { params })
-        .then(res => res.data)
+
+        .then(res => {
+            console.log('res:', res)
+           return res.data})
 }
 
 

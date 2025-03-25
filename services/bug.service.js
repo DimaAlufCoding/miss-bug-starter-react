@@ -1,5 +1,4 @@
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
 
 
 
@@ -35,10 +34,11 @@ function remove(bugId) {
 }
 
 function save(bugToSave) {
-    if(bugToSave._id) {
+    if (bugToSave._id) {
         const bugIdx = bugs.findIndex(bug => bug._id === bugToSave._id)
-        bugs[bugIdx] = bugToSave
-    }else{
+        bugs[bugIdx].title = bugToSave.title
+        bugs[bugIdx].severity = bugToSave.severity
+    } else {
         bugToSave._id = utilService.makeId()
         bugs.unshift(bugToSave)
     }

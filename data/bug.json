@@ -1,22 +1,35 @@
 [
     {
-        "title": "Infinite Loop Detected",
-        "severity": 4,
-        "_id": "1NF1N1T3"
+        "_id": "ygxY31"
     },
     {
+        "_id": "CtBHZF"
+    },
+    {
+        "_id": "svNEYj"
+    },
+    {
+        "_id": "OPr1B1",
+        "severity": 3
+    },
+    {
+        "_id": "SiJEXH",
+        "title": "Bug 1742915796345",
+        "severity": 3
+    },
+    {
+        "_id": "1NF1N1T3",
+        "title": "Infinite Loop Detected",
+        "severity": 0
+    },
+    {
+        "_id": "K3YB0RD",
         "title": "Keyboard Not Found",
-        "severity": 3,
-        "_id": "K3YB0RD"
+        "severity": 5
     },
     {
         "title": "404 Coffee Not Found",
         "severity": 2,
         "_id": "C0FF33"
-    },
-    {
-        "title": "Unexpected Response",
-        "severity": 1,
-        "_id": "G0053"
     }
 ]

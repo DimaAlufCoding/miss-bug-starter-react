@@ -1,4 +1,3 @@
-import fs from 'fs'
 
 
 export const utilService = {
@@ -6,9 +5,7 @@ export const utilService = {
     makeLorem,
     getRandomIntInclusive,
     loadFromStorage,
-    saveToStorage,
-    readJsonFile,
-    _saveToFile
+    saveToStorage
 }
 
 function makeId(length = 6) {
@@ -51,20 +48,5 @@ function saveToStorage(keyDB, val) {
 
 
 
-function readJsonFile(path) {
-    const str = fs.readFileSync(path, 'utf8')
-    const json = JSON.parse(str)
-    return json
-}
 
 
-function _saveToFile(path, json) {
-    return new Promise((resolve, reject) => {
-        const data = JSON.stringify(json, null, 4)
-
-        fs.writeFile(path, data, err => {
-            if (err) reject(err)
-            else resolve()
-        })
-    })
-}
