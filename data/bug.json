@@ -1,6 +1,12 @@
 [
     {
-        "_id": "ygxY31"
+        "title": "Dima",
+        "severity": 6,
+        "_id": "LKJCOf"
+    },
+    {
+        "_id": "ygxY31",
+        "severity": 1
     },
     {
         "_id": "CtBHZF"
@@ -20,7 +26,7 @@
     {
         "_id": "1NF1N1T3",
         "title": "Infinite Loop Detected",
-        "severity": 0
+        "severity": 3
     },
     {
         "_id": "K3YB0RD",

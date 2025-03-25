@@ -10,8 +10,7 @@ export const bugService = {
 
 }
 
-const bugs = utilService.readJsonFile
-    ('./data/bug.json')
+const bugs = utilService.readJsonFile('./data/bug.json')
 
 function query() {
     return Promise

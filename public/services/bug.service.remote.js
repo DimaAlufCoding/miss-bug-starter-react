@@ -42,24 +42,21 @@ function remove(bugId) {
 
 
 function save(bug) {
-    const params = {
-        title: bug.title,
-        severity: bug.severity
-    }
-
     if (bug._id) {
-        params._id = bug._id
-    }
-
-    else {
+        return axios.put(BASE_URL + bug._id, bug)
+            .then(res => res.data)
+            .catch(err => {
+                console.log('err:', err)
+                throw err
+            })
+    } else {
         return axios.post(BASE_URL, bug)
             .then(res => res.data)
+            .catch(err => {
+                console.log('err:', err)
+                throw err
+            })
     }
-    return axios.get(BASE_URL + 'save', { params })
-
-        .then(res => {
-            console.log('res:', res)
-           return res.data})
 }
 
 

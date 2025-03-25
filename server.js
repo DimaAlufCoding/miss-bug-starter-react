@@ -30,23 +30,20 @@ app.post('/api/bug', (req, res) => {
     bugService.save(bugToSave)
         .then(bug => res.send(bug))
         .catch(err => {
-            loggerService.error('Cannot save bug', err)
-            res.status(500).send('Could not save bug')
+            loggerService.error('Cannot add bug', err)
+            res.status(500).send('Could not add bug')
         })
 })
 
 // Edit a bug
 app.put('/api/bug/:bugId', (req, res) => {
-    const bugToSave = {
-        _id: req.query._id,
-        title: req.query.title,
-        severity: +req.query.severity,
-    }
+    const bugToSave = req.body
+
     bugService.save(bugToSave)
         .then(bug => res.send(bug))
         .catch(err => {
-            loggerService.error('Cannot save bug', err)
-            res.status(500).send('Could not save bug')
+            loggerService.error('Cannot update bug', err)
+            res.status(500).send('Could update bug')
         })
 })
 
