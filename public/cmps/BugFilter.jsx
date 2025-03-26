@@ -1,11 +1,14 @@
-const { useState, useEffect } = React
+import { utilService } from "../services/util.service.js"
+
+const { useState, useEffect ,useRef} = React
 
 export function BugFilter({ filterBy, onSetFilterBy }) {
 
-    const [filterByToEdit, setFilterByToEdit] = useState(filterBy)
+    const [filterByToEdit, setFilterByToEdit] = useState({...filterBy})
+    const onSetFilterDebounce = useRef(utilService.debounce(onSetFilterBy, 700))
 
     useEffect(() => {
-        onSetFilterBy(filterByToEdit)
+        onSetFilterDebounce.current(filterByToEdit)
     }, [filterByToEdit])
 
     function handleChange({ target }) {
