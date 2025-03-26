@@ -1,6 +1,5 @@
 import { utilService } from './util.service.js'
-
-
+const PAGE_SIZE = 5
 
 export const bugService = {
     query,
@@ -12,9 +11,33 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('./data/bug.json')
 
-function query() {
-    return Promise
-        .resolve(bugs)
+function query(filterBy, sortBy) {
+    return Promise.resolve(bugs)
+        .then(bugs => {
+            if (filterBy.txt) {
+                const regex = new RegExp(filterBy.txt, 'i')
+                bugs = bugs.filter(bug => regex.test(bug.title))
+            }
+            if (filterBy.minSeverity) {
+                console.log('filterBy.minSeverity:', filterBy.minSeverity)
+                bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
+            }
+
+            if (filterBy.pageIdx !== undefined && filterBy.pageIdx !== null && filterBy.pageIdx !== '') {
+                console.log('filterBy.pageIdx:', filterBy.pageIdx)
+                const startIdx = (filterBy.pageIdx) * PAGE_SIZE
+                bugs = bugs.slice(startIdx, startIdx + PAGE_SIZE)
+            }
+
+            if (sortBy === 'title') {
+                bugs = bugs.sort((a, b) => a.title.localeCompare(b.title))
+            }
+
+            if (sortBy === 'severity') {
+                bugs = bugs.sort((a, b) => a.severity - b.severity)
+            }
+            return bugs
+        })
 }
 
 function getById(bugId) {

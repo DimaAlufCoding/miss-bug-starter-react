@@ -1,41 +1,35 @@
 [
     {
-        "title": "Dima",
-        "severity": 6,
-        "_id": "LKJCOf"
+      "_id": "abc123",
+      "title": "Cannot save a bug",
+      "description": "problem when clicking Save",
+      "severity": 3,
+      "createdAt": 1542107359454,
+      "labels": ["critical", "need-CR", "dev-branch"]
     },
     {
-        "_id": "ygxY31",
-        "severity": 1
+      "_id": "def456",
+      "title": "Login fails on Chrome",
+      "description": "error on authentication",
+      "severity": 2,
+      "createdAt": 1622107359454,
+      "labels": ["medium", "login-issue", "QA"]
     },
     {
-        "_id": "CtBHZF"
+      "_id": "ghi789",
+      "title": "Crash on logout",
+      "description": "app crashes after clicking logout",
+      "severity": 4,
+      "createdAt": 1665107359454,
+      "labels": ["high", "frontend", "urgent"]
     },
     {
-        "_id": "svNEYj"
-    },
-    {
-        "_id": "OPr1B1",
-        "severity": 3
-    },
-    {
-        "_id": "SiJEXH",
-        "title": "Bug 1742915796345",
-        "severity": 3
-    },
-    {
-        "_id": "1NF1N1T3",
-        "title": "Infinite Loop Detected",
-        "severity": 3
-    },
-    {
-        "_id": "K3YB0RD",
-        "title": "Keyboard Not Found",
-        "severity": 5
-    },
-    {
-        "title": "404 Coffee Not Found",
-        "severity": 2,
-        "_id": "C0FF33"
+      "_id": "jkl012",
+      "title": "UI Misalignment on Dashboard",
+      "description": "text overlaps on smaller screens",
+      "severity": 1,
+      "createdAt": 1702107359454,
+      "labels": ["low", "design", "responsive"]
     }
-]
+  ]
+  

@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { text } from 'express'
 import cookieParser from 'cookie-parser'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
@@ -15,7 +15,15 @@ app.listen(3036, () => console.log('Server ready at port 3036'))
 
 // Read all the bugs
 app.get('/api/bug', (req, res) => {
-    bugService.query()
+    const filterBy = {
+        txt: req.query.txt || '',
+        minSeverity: +req.query.minSeverity || 0,
+        pageIdx: req.query.pageIdx
+    }
+    const sortBy = req.query.sortBy || ''
+    console.log(sortBy)
+
+    bugService.query(filterBy, sortBy)  
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error('Cannot get bugs', err)
