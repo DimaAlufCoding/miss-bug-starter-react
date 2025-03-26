@@ -18,10 +18,10 @@ app.get('/api/bug', (req, res) => {
     const filterBy = {
         txt: req.query.txt || '',
         minSeverity: +req.query.minSeverity || 0,
+        labels: req.query.labels || [],
         pageIdx: req.query.pageIdx
     }
     const sortBy = req.query.sortBy || ''
-    console.log(sortBy)
 
     bugService.query(filterBy, sortBy)  
         .then(bugs => res.send(bugs))

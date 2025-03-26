@@ -22,6 +22,10 @@ function query(filterBy, sortBy) {
                 console.log('filterBy.minSeverity:', filterBy.minSeverity)
                 bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
             }
+            if (filterBy.labels && filterBy.labels.length) {
+                console.log('filterBy.labels:', filterBy.labels)
+                bugs = bugs.filter(bug => filterBy.labels.every(label => bug.labels.includes(label)))   
+            }
 
             if (filterBy.pageIdx !== undefined && filterBy.pageIdx !== null && filterBy.pageIdx !== '') {
                 console.log('filterBy.pageIdx:', filterBy.pageIdx)
@@ -29,12 +33,17 @@ function query(filterBy, sortBy) {
                 bugs = bugs.slice(startIdx, startIdx + PAGE_SIZE)
             }
 
+
             if (sortBy === 'title') {
                 bugs = bugs.sort((a, b) => a.title.localeCompare(b.title))
             }
 
             if (sortBy === 'severity') {
                 bugs = bugs.sort((a, b) => a.severity - b.severity)
+            }
+
+            if(sortBy === 'createdAt'){
+                bugs = bugs.sort((a, b) => a.createdAt - b.createdAt)
             }
             return bugs
         })

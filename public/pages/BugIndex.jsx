@@ -91,5 +91,16 @@ export function BugIndex() {
             <span>Page: {filterBy.pageIdx + 1}</span>
             <button onClick={() => { onSetPage(1) }}>Next Page</button>
         </div>
+
+        <label>
+            Sorting
+            <select onChange={(ev) => {
+                setFilterBy(prevFilter => ({ ...prevFilter, sortBy: ev.target.value }))
+            }}>
+                <option value="title">Title</option>
+                <option value="severity">Severity</option>
+                <option value="createdAt">Created At</option>
+            </select>
+        </label>
     </section>
 }

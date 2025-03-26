@@ -1,2 +1,7 @@
 25.3.2025, 17:37:22 - ERROR - Cannot get bug | No bug found
 25.3.2025, 17:37:56 - ERROR - Cannot get bug | No bug found
+26.3.2025, 19:23:00 - ERROR - Cannot get bugs | TypeError: Cannot read properties of undefined (reading 'includes')
+26.3.2025, 19:23:29 - ERROR - Cannot get bugs | TypeError: Cannot read properties of undefined (reading 'includes')
+26.3.2025, 19:23:50 - ERROR - Cannot get bugs | TypeError: filterBy.labels.every is not a function
+26.3.2025, 19:23:58 - ERROR - Cannot get bugs | TypeError: filterBy.labels.every is not a function
+26.3.2025, 19:26:39 - ERROR - Cannot get bugs | TypeError: Cannot read properties of undefined (reading 'includes')

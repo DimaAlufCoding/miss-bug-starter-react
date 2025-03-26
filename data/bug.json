@@ -1,20 +1,5 @@
 [
     {
-        "title": "Bug 1743007958676",
-        "severity": 0,
-        "_id": "4XFwh8"
-    },
-    {
-        "title": "Bug 1743007890468",
-        "severity": 3,
-        "_id": "hduGgl"
-    },
-    {
-        "title": "Bug 1743007886679",
-        "severity": 3,
-        "_id": "11oxei"
-    },
-    {
         "_id": "abc123",
         "title": "Cannot save a bug",
         "description": "problem when clicking Save",
@@ -27,18 +12,6 @@
         ]
     },
     {
-        "_id": "def456",
-        "title": "Login fails on Chrome",
-        "description": "error on authentication",
-        "severity": 2,
-        "createdAt": 1622107359454,
-        "labels": [
-            "medium",
-            "login-issue",
-            "QA"
-        ]
-    },
-    {
         "_id": "ghi789",
         "title": "Crash on logout",
         "description": "app crashes after clicking logout",
@@ -48,6 +21,18 @@
             "high",
             "frontend",
             "urgent"
+        ]
+    },
+    {
+        "_id": "def456",
+        "title": "Login fails on Chrome",
+        "description": "error on authentication",
+        "severity": 2,
+        "createdAt": 1622107359454,
+        "labels": [
+            "medium",
+            "login-issue",
+            "QA"
         ]
     },
     {
