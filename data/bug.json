@@ -1,50 +1,47 @@
 [
     {
-        "_id": "abc123",
-        "title": "Cannot save a bug",
-        "description": "problem when clicking Save",
-        "severity": 3,
-        "createdAt": 1542107359454,
-        "labels": [
-            "critical",
-            "need-CR",
-            "dev-branch"
-        ]
+      "_id": "bug001",
+      "title": "Cannot delete a note",
+      "description": "Errors when clicking the Delete button",
+      "severity": 2,
+      "createdAt": 1678345839454,
+      "creator": {
+        "_id": "u102",
+        "fullname": "John Doe"
+      }
     },
     {
-        "_id": "ghi789",
-        "title": "Crash on logout",
-        "description": "app crashes after clicking logout",
-        "severity": 4,
-        "createdAt": 1665107359454,
-        "labels": [
-            "high",
-            "frontend",
-            "urgent"
-        ]
+      "_id": "bug002",
+      "title": "Search function not working",
+      "description": "Search returns no results even when items exist",
+      "severity": 4,
+      "createdAt": 1678345849454,
+      "creator": {
+        "_id": "u103",
+        "fullname": "Jane Smith"
+      }
     },
     {
-        "_id": "def456",
-        "title": "Login fails on Chrome",
-        "description": "error on authentication",
-        "severity": 2,
-        "createdAt": 1622107359454,
-        "labels": [
-            "medium",
-            "login-issue",
-            "QA"
-        ]
+      "_id": "bug003",
+      "title": "UI breaks on resizing",
+      "description": "The layout gets distorted when window is resized",
+      "severity": 3,
+      "createdAt": 1678345859454,
+      "creator": {
+        "_id": "u104",
+        "fullname": "Max Power"
+      }
     },
     {
-        "_id": "jkl012",
-        "title": "UI Misalignment on Dashboard",
-        "description": "text overlaps on smaller screens",
-        "severity": 1,
-        "createdAt": 1702107359454,
-        "labels": [
-            "low",
-            "design",
-            "responsive"
-        ]
+      "_id": "bug004",
+      "title": "Cannot update user profile",
+      "description": "Error 500 when submitting profile changes",
+      "severity": 1,
+      "createdAt": 1678345869454,
+      "creator": {
+        "_id": "u105",
+        "fullname": "Alice Green"
+      }
     }
-]
+  ]
+  
