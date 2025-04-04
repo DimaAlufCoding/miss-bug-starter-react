@@ -1,0 +1,76 @@
+[
+    {
+        "_id": "u201",
+        "username": "zuzu",
+        "fullname": "Zuzu Z",
+        "password": "zuzu123",
+        "score": 150,
+        "isAdmin": true
+    },
+    {
+        "_id": "u202",
+        "username": "toto",
+        "fullname": "Toto T",
+        "password": "toto123",
+        "score": 90
+    },
+    {
+        "_id": "u203",
+        "username": "nina",
+        "fullname": "Nina N",
+        "password": "nina456",
+        "score": 80
+    },
+    {
+        "_id": "u204",
+        "username": "lulu",
+        "fullname": "Lulu L",
+        "password": "lulu789",
+        "score": 120
+    },
+    {
+        "_id": "u205",
+        "username": "dodo",
+        "fullname": "Dodo D",
+        "password": "dodo321",
+        "score": 50,
+        "isAdmin": false
+    },
+    {
+        "_id": "u206",
+        "username": "vivi",
+        "fullname": "Vivi V",
+        "password": "vivi654",
+        "score": 70
+    },
+    {
+        "_id": "u207",
+        "username": "coco",
+        "fullname": "Coco C",
+        "password": "coco888",
+        "score": 110
+    },
+    {
+        "_id": "u208",
+        "username": "papa",
+        "fullname": "Papa P",
+        "password": "papa000",
+        "score": 130,
+        "isAdmin": true
+    },
+    {
+        "_id": "u209",
+        "username": "momo",
+        "fullname": "Momo M",
+        "password": "momo555",
+        "score": 60
+    },
+    {
+        "_id": "u210",
+        "username": "roro",
+        "fullname": "Roro R",
+        "password": "roro333",
+        "score": 100,
+        "isAdmin": false
+    }
+]
