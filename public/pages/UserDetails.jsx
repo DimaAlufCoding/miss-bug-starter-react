@@ -6,6 +6,7 @@ import { BugList } from "../cmps/BugList.jsx"
 import { bugService } from "../services/bug.service.remote.js"
 
 export function UserDetails() {
+    
   const [user, setUser] = useState(null)
   const params = useParams()
   const navigate = useNavigate()
@@ -24,8 +25,7 @@ export function UserDetails() {
 
   function loadUser() {
     userService
-      .getById(userId)
-      .then((userData) => {
+      .getById(userId).then((userData) => {
         if (!userData) throw new Error("User not found")
         setUser(userData)
       })
@@ -37,8 +37,7 @@ export function UserDetails() {
 
   function loadUserBugs() {
     if (!user || !user._id) return
-    bugService
-      .query({ userId: user._id })
+    bugService.query({ userId: user._id })
       .then((res) => {
         setBugs(res || [])
       })
@@ -46,10 +45,9 @@ export function UserDetails() {
         console.log("Error loading bugs:", err)
       })
   }
+
   function onRemoveBug(bugId) {
-    bugService
-      .remove(bugId)
-      .then(() => {
+    bugService.remove(bugId).then(() => {
         console.log("Deleted Succesfully!")
         setBugs((prevBugs) => prevBugs.filter((bug) => bug._id !== bugId))
         showSuccessMsg("Bug removed")
@@ -81,7 +79,7 @@ export function UserDetails() {
       })
   }
 
-  function onBack() {}
+
 
   if (!user) return <div>Loading...</div>
 
