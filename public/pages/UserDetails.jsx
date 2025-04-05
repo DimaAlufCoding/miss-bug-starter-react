@@ -12,7 +12,6 @@ export function UserDetails() {
   const [bugs, setBugs] = useState([])
 
   const userId = params.userId
-  console.log("userId:", userId)
   useEffect(() => {
     loadUser()
   }, [userId])
@@ -38,11 +37,9 @@ export function UserDetails() {
 
   function loadUserBugs() {
     if (!user || !user._id) return
-    console.log("Querying bugs for user ID:", user._id)
     bugService
       .query({ userId: user._id })
       .then((res) => {
-        console.log("Bugs received:", res)
         setBugs(res || [])
       })
       .catch((err) => {
