@@ -1,47 +1,33 @@
 [
     {
-      "_id": "bug001",
-      "title": "Cannot delete a note",
-      "description": "Errors when clicking the Delete button",
-      "severity": 2,
-      "createdAt": 1678345839454,
-      "creator": {
-        "_id": "u102",
-        "fullname": "John Doe"
-      }
+        "title": "Bug 1743784912516",
+        "severity": 5,
+        "_id": "zJIOus",
+        "creator": {
+            "_id": "u202",
+            "fullname": "Toto T"
+        }
     },
     {
-      "_id": "bug002",
-      "title": "Search function not working",
-      "description": "Search returns no results even when items exist",
-      "severity": 4,
-      "createdAt": 1678345849454,
-      "creator": {
-        "_id": "u103",
-        "fullname": "Jane Smith"
-      }
+        "_id": "bug001",
+        "title": "Cannot delete a note",
+        "description": "Errors when clicking the Delete button",
+        "severity": 5,
+        "createdAt": 1678345839454,
+        "creator": {
+            "_id": "u202",
+            "fullname": "Toto T"
+        }
     },
     {
-      "_id": "bug003",
-      "title": "UI breaks on resizing",
-      "description": "The layout gets distorted when window is resized",
-      "severity": 3,
-      "createdAt": 1678345859454,
-      "creator": {
-        "_id": "u104",
-        "fullname": "Max Power"
-      }
-    },
-    {
-      "_id": "bug004",
-      "title": "Cannot update user profile",
-      "description": "Error 500 when submitting profile changes",
-      "severity": 1,
-      "createdAt": 1678345869454,
-      "creator": {
-        "_id": "u105",
-        "fullname": "Alice Green"
-      }
+        "_id": "bug002",
+        "title": "Search function not working",
+        "description": "Search returns no results even when items exist",
+        "severity": 4,
+        "createdAt": 1678345849454,
+        "creator": {
+            "_id": "u203",
+            "fullname": "Nina N"
+        }
     }
-  ]
-  
+]

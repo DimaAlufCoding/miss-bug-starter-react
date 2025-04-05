@@ -6,6 +6,7 @@ import { userService } from './services/user.service.js'
 import { authService } from './services/auth.service.js'
 
 
+import path from 'path';
 
 
 
@@ -23,11 +24,12 @@ app.get('/api/bug', (req, res) => {
         txt: req.query.txt || '',
         minSeverity: +req.query.minSeverity || 0,
         labels: req.query.labels || [],
-        pageIdx: req.query.pageIdx
+        pageIdx: req.query.pageIdx,
+        userId: req.query.userId || ''
     }
     const sortBy = req.query.sortBy || ''
 
-    bugService.query(filterBy, sortBy)  
+    bugService.query(filterBy, sortBy)
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error('Cannot get bugs', err)
@@ -37,9 +39,12 @@ app.get('/api/bug', (req, res) => {
 
 // Create a bug
 app.post('/api/bug', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send(`Can't add bug`)
+
     const bugToSave = req.body
-    
-    bugService.save(bugToSave)
+
+    bugService.save(bugToSave, loggedinUser)
         .then(bug => res.send(bug))
         .catch(err => {
             loggerService.error('Cannot add bug', err)
@@ -49,9 +54,12 @@ app.post('/api/bug', (req, res) => {
 
 // Edit a bug
 app.put('/api/bug/:bugId', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send(`Can't update bug`)
+
     const bugToSave = req.body
 
-    bugService.save(bugToSave)
+    bugService.save(bugToSave, loggedinUser)
         .then(bug => res.send(bug))
         .catch(err => {
             loggerService.error('Cannot update bug', err)
@@ -64,8 +72,8 @@ app.get('/api/bug/:bugId', (req, res) => {
     const { bugId } = req.params
     const { visitedBugs = [] } = req.cookies
 
-    if(visitedBugs.length >=3) return res.status(403).send('Wait for a bit')
-    if(!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
+    if (visitedBugs.length >= 3) return res.status(403).send('Wait for a bit')
+    if (!visitedBugs.includes(bugId)) visitedBugs.push(bugId)
 
     res.cookie('visitedBugs', visitedBugs, { maxAge: 7000 })
     bugService.getById(bugId)
@@ -78,8 +86,11 @@ app.get('/api/bug/:bugId', (req, res) => {
 
 // Delete a bug
 app.delete('/api/bug/:bugId', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send(`Can't remove bug`)
+
     const { bugId } = req.params
-    bugService.remove(bugId)
+    bugService.remove(bugId, loggedinUser)
         .then(() => res.send('Bug removed'))
         .catch(err => {
             loggerService.error('Cannot remove bug', err)

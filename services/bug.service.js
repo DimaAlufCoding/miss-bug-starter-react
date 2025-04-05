@@ -11,7 +11,7 @@ export const bugService = {
 
 const bugs = utilService.readJsonFile('./data/bug.json')
 
-function query(filterBy, sortBy) {
+function query(filterBy ={}, sortBy) {
     return Promise.resolve(bugs)
         .then(bugs => {
             if (filterBy.txt) {
@@ -24,13 +24,16 @@ function query(filterBy, sortBy) {
             }
             if (filterBy.labels && filterBy.labels.length) {
                 console.log('filterBy.labels:', filterBy.labels)
-                bugs = bugs.filter(bug => filterBy.labels.every(label => bug.labels.includes(label)))   
+                bugs = bugs.filter(bug => filterBy.labels.every(label => bug.labels.includes(label)))
             }
 
             if (filterBy.pageIdx !== undefined && filterBy.pageIdx !== null && filterBy.pageIdx !== '') {
                 console.log('filterBy.pageIdx:', filterBy.pageIdx)
                 const startIdx = (filterBy.pageIdx) * PAGE_SIZE
                 bugs = bugs.slice(startIdx, startIdx + PAGE_SIZE)
+            }
+            if (filterBy.userId) {
+                bugs = bugs.filter(bug => bug.creator._id === filterBy.userId)
             }
 
 
@@ -42,11 +45,12 @@ function query(filterBy, sortBy) {
                 bugs = bugs.sort((a, b) => a.severity - b.severity)
             }
 
-            if(sortBy === 'createdAt'){
+            if (sortBy === 'createdAt') {
                 bugs = bugs.sort((a, b) => a.createdAt - b.createdAt)
             }
             return bugs
         })
+
 }
 
 function getById(bugId) {
@@ -56,21 +60,35 @@ function getById(bugId) {
     return Promise.resolve(bug)
 }
 
-function remove(bugId) {
+function remove(bugId, loggedinUser) {
     const bugIdx = bugs.findIndex(bug => bug._id === bugId)
 
     if (bugIdx === -1) return Promise.reject('Cannot remove bug' + bugId)
+
+    if (!loggedinUser.isAdmin &&
+        bugs[bugIdx].creator._id !== loggedinUser._id) {
+        return Promise.reject(`Not your bug`)
+    }
+
     bugs.splice(bugIdx, 1)
     return utilService._saveToFile('./data/bug.json', bugs)
 }
 
-function save(bugToSave) {
+function save(bugToSave, loggedinUser) {
     if (bugToSave._id) {
         const bugIdx = bugs.findIndex(bug => bug._id === bugToSave._id)
+
+        if (!loggedinUser.isAdmin &&
+            bugs[bugIdx].creator._id !== loggedinUser._id) {
+            return Promise.reject(`Not your bug`)
+        }
+
         bugs[bugIdx].title = bugToSave.title
         bugs[bugIdx].severity = bugToSave.severity
     } else {
+
         bugToSave._id = utilService.makeId()
+        bugToSave.creator = { _id: loggedinUser._id, fullname: loggedinUser.fullname }
         bugs.unshift(bugToSave)
     }
     return utilService._saveToFile('./data/bug.json', bugs).then(() => bugToSave)
